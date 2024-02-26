@@ -19,11 +19,7 @@ class SideMenuBody extends StatelessWidget {
     return Column(mainAxisSize: MainAxisSize.max, children: [
       if (data.header != null) data.header!,
       if (data.customChild != null)
-        Expanded(
-            flex: data.customWidgetFlex!,
-            child: ClipRRect(
-                borderRadius: BorderRadius.circular(30),
-                child: data.customChild!)),
+        Expanded(flex: data.customWidgetFlex!, child: data.customChild!),
       data.withSpacing!
           ? Spacer(
               flex: data.spacingFlex!,
