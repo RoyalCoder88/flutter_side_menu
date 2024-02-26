@@ -55,8 +55,10 @@ class _SideMenuItemTileState extends State<SideMenuItemTile> {
 
   Color getSelectedColor() {
     return widget.data.isSelected
-        ? widget.data.selectedTitleStyle?.color  ?? Theme.of(context).colorScheme.onSecondaryContainer
-        : widget.data.titleStyle?.color ?? Theme.of(context).colorScheme.onSurfaceVariant;
+        ? widget.data.selectedTitleStyle?.color ??
+            Theme.of(context).colorScheme.onSecondaryContainer
+        : widget.data.titleStyle?.color ??
+            Theme.of(context).colorScheme.onSurfaceVariant;
   }
 
   Widget? getSelectedIcon() {

@@ -7,8 +7,15 @@ class SideMenuData {
     this.header,
     this.footer,
     this.items,
+    this.withSpacing,
+    this.spacingFlex,
+    this.customWidgetFlex,
   }) : assert(customChild != null || items != null);
 
   final Widget? customChild, header, footer;
   final List<SideMenuItemData>? items;
+  //! DORIN CUSTOM PARAMS
+  final bool? withSpacing;
+  final int? spacingFlex;
+  final int? customWidgetFlex;
 }

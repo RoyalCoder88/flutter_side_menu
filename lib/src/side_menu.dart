@@ -220,6 +220,7 @@ class _SideMenuState extends State<SideMenu> with SideMenuWidthMixin {
       duration: Constants.duration,
       width: _currentWidth,
       color: widget.backgroundColor ?? Theme.of(context).colorScheme.surface,
+      //color: Colors.pink,
       constraints: BoxConstraints(
         minHeight: size.height,
         maxHeight: size.height,
