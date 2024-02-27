@@ -13,6 +13,12 @@ class SideMenuBody extends StatelessWidget {
   final double minWidth;
   final bool isOpen;
   final SideMenuData data;
+  // final AnimationController _ctrlAnimCustomWidget = AnimationController(
+  //     vsync: this, duration: const Duration(milliseconds: 1000));
+  // final Animation<double> _animCustomWidget = CurvedAnimation(
+  //   parent: _ctrlAnimCustomWidget,
+  //   curve: Curves.easeIn,
+  // );
 
   @override
   Widget build(BuildContext context) {
@@ -27,37 +33,46 @@ class SideMenuBody extends StatelessWidget {
           : const SizedBox.shrink(),
       if (data.items != null)
         Expanded(
-          child: Container(
-            color: Colors.transparent,
-            child: ListView.builder(
-              controller: ScrollController(),
-              itemCount: data.items!.length,
-              //reverse: true,
-              //shrinkWrap: true,
-              itemBuilder: (context, index) {
-                final SideMenuItemData item = data.items![index];
-                if (item is SideMenuItemDataTile) {
-                  return SideMenuItemTile(
-                    minWidth: minWidth,
-                    isOpen: isOpen,
-                    data: item,
-                  );
-                } else if (item is SideMenuItemDataTitle) {
-                  return SideMenuItemTitle(
-                    data: item,
-                  );
-                } else if (item is SideMenuItemDataDivider) {
-                  return SideMenuItemDivider(
-                    data: item,
-                  );
-                }
-                return const SizedBox.shrink();
-              },
+          child: AnimatedScale(
+            scale: isOpen ? 1 : data.menuItemsMinSize!,
+            duration: data.scaleMenuItemAnimDuration ??
+                const Duration(milliseconds: 500),
+            child: Container(
+              color: Colors.transparent,
+              child: ListView.builder(
+                controller: ScrollController(),
+                itemCount: data.items!.length,
+                //reverse: true,
+                //shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  final SideMenuItemData item = data.items![index];
+                  if (item is SideMenuItemDataTile) {
+                    return SideMenuItemTile(
+                      minWidth: minWidth,
+                      isOpen: isOpen,
+                      data: item,
+                    );
+                  } else if (item is SideMenuItemDataTitle) {
+                    return SideMenuItemTitle(
+                      data: item,
+                    );
+                  } else if (item is SideMenuItemDataDivider) {
+                    return SideMenuItemDivider(
+                      data: item,
+                    );
+                  }
+                  return const SizedBox.shrink();
+                },
+              ),
             ),
           ),
         ),
-      //const Spacer(),
-      if (data.footer != null) data.footer!,
+      if (data.footer != null)
+        AnimatedScale(
+            scale: isOpen ? 1 : data.footeMinScale!, //data.menuItemsMinSize!
+            duration: data.scaleMenuItemAnimDuration ??
+                const Duration(milliseconds: 500),
+            child: data.footer!),
     ]);
   }
 }

@@ -36,114 +36,97 @@ class _MyAppState extends State<MyApp> {
               hasResizerToggle: false,
               builder: (data) {
                 return SideMenuData(
+                  scaleMenuItemAnimDuration: const Duration(milliseconds: 300),
+                  scaleFooterAnimDuration: const Duration(milliseconds: 600),
+                  menuItemsMinSize: 0.95,
+                  footeMinScale: 0.5,
+                  customWidgetFlex: data.isOpen ? 2 : 3,
+                  withSpacing: false,
+                  spacingFlex: 1,
                   header: const Text(
                     'Header / logo',
                     style: TextStyle(color: Colors.amber),
                   ),
-                  customChild: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      data.isOpen
-                          ? Padding(
-                              padding: const EdgeInsets.only(left: 10.0),
-                              child: SizedBox(
-                                //color: Colors.orange,
-                                height: 35,
-                                child: ElevatedButton.icon(
-                                  onPressed: () {},
-                                  label: const Text('New chat'),
-                                  icon: const Icon(Icons.add),
-                                ),
-                              ),
-                            )
-                          : const Center(
-                              child: InkWell(
-                                child: Icon(
-                                  Icons.add,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      // const Padding(
-                      //   padding: EdgeInsets.only(left: 10.0),
-                      //   child: Text(
-                      //     'Recent',
-                      //     textAlign: TextAlign.start,
-                      //     style: TextStyle(
-                      //         color: Colors.white, fontWeight: FontWeight.w800),
-                      //   ),
-                      // ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Expanded(
-                        flex: 3,
-                        child: Container(
-                          color: Colors.transparent,
-                          child: ListView.builder(
-                            //controller: ScrollController(),
-                            itemCount: 50,
-                            //reverse: true,
-                            //shrinkWrap: true,
-                            itemBuilder: (context, index) {
-                              if (index == 0) {
-                                return Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10.0, bottom: 15),
-                                  child: Text(
-                                    'Recent',
-                                    textAlign: TextAlign.start,
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w800,
-                                      fontSize: data.isOpen ? 14 : 8,
-                                    ),
-                                  ),
-                                );
-                              } else {
-                                return Padding(
-                                  padding: const EdgeInsets.all(4.0),
-                                  child: SizedBox(
-                                    //color: Colors.orange,
-                                    height: 35,
-                                    child: data.isOpen
-                                        ? ElevatedButton.icon(
-                                            onPressed: () {},
-                                            label: Text(
-                                              '$index - chat text aici, bla bla si cu bla bla bla',
-                                              maxLines: 1,
-                                              overflow: TextOverflow.ellipsis,
-                                            ),
-                                            icon: const Icon(
-                                              Icons.messenger_outline,
-                                            ),
-                                          )
-                                        : const InkWell(
-                                            child: Icon(
-                                              Icons.messenger_outline,
-                                              color: Colors.white,
-                                              size: 10,
-                                            ),
-                                          ),
-                                  ),
-                                );
-                              }
-                            },
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                    ],
-                  ),
-                  customWidgetFlex: 2,
-                  withSpacing: false,
-                  spacingFlex: 1,
+                  // customChild: Column(
+                  //   mainAxisAlignment: MainAxisAlignment.start,
+                  //   crossAxisAlignment: CrossAxisAlignment.start,
+                  //   children: [
+                  //     data.isOpen
+                  //         ? Padding(
+                  //             padding: const EdgeInsets.only(left: 10.0),
+                  //             child: SizedBox(
+                  //               //color: Colors.orange,
+                  //               height: 35,
+                  //               child: ElevatedButton.icon(
+                  //                 onPressed: () {},
+                  //                 label: const Text('New chat'),
+                  //                 icon: const Icon(Icons.add),
+                  //               ),
+                  //             ),
+                  //           )
+                  //         : const Center(
+                  //             child: InkWell(
+                  //               child: Icon(
+                  //                 Icons.add,
+                  //                 color: Colors.white,
+                  //               ),
+                  //             ),
+                  //           ),
+                  //     const SizedBox(
+                  //       height: 10,
+                  //     ),
+                  //     Expanded(
+                  //       flex: 3,
+                  //       child: Container(
+                  //         color: Colors.lime,
+                  //         child: ListView.builder(
+                  //           itemCount: 3,
+                  //           itemBuilder: (context, index) {
+                  //             if (index == 0) {
+                  //               return Expanded(
+                  //                 child: Padding(
+                  //                   padding: const EdgeInsets.only(
+                  //                       left: 10.0, bottom: 15),
+                  //                   child: Text(
+                  //                     'Recent',
+                  //                     textAlign: TextAlign.start,
+                  //                     style: TextStyle(
+                  //                       color: Colors.white,
+                  //                       fontWeight: FontWeight.w800,
+                  //                       fontSize: data.isOpen ? 14 : 8,
+                  //                     ),
+                  //                   ),
+                  //                 ),
+                  //               );
+                  //             } else {
+                  //               return Padding(
+                  //                 padding: const EdgeInsets.all(4.0),
+                  //                 child: Expanded(
+                  //                   child: data.isOpen
+                  //                       ? Text(
+                  //                           '$index - chat text aici, bla bla si cu bla bla bla',
+                  //                           maxLines: 1,
+                  //                           overflow: TextOverflow.ellipsis,
+                  //                         )
+                  //                       : const InkWell(
+                  //                           child: Icon(
+                  //                             Icons.messenger_outline,
+                  //                             color: Colors.white,
+                  //                             size: 10,
+                  //                           ),
+                  //                         ),
+                  //                 ),
+                  //               );
+                  //             }
+                  //           },
+                  //         ),
+                  //       ),
+                  //     ),
+                  //     const SizedBox(
+                  //       height: 10,
+                  //     ),
+                  //   ],
+                  // ),
                   items: [
                     //const SideMenuItemDataTitle(title: 'Section Header'),
                     SideMenuItemDataTile(
@@ -192,13 +175,12 @@ class _MyAppState extends State<MyApp> {
                     ),
                   ],
                   footer: Container(
-                    color: Colors.transparent,
-                    height: 50,
-                    child: const Text(
-                      'Footer',
-                      style: TextStyle(color: Colors.amber),
-                    ),
-                  ),
+                      color: Colors.lime,
+                      height: 50,
+                      child: const Text(
+                        'Footer',
+                        style: TextStyle(color: Colors.amber),
+                      )),
                 );
               },
             ),

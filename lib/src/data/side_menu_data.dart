@@ -10,6 +10,10 @@ class SideMenuData {
     this.withSpacing,
     this.spacingFlex,
     this.customWidgetFlex,
+    this.scaleMenuItemAnimDuration,
+    this.scaleFooterAnimDuration,
+    this.menuItemsMinSize,
+    this.footeMinScale,
   }) : assert(customChild != null || items != null);
 
   final Widget? customChild, header, footer;
@@ -18,4 +22,8 @@ class SideMenuData {
   final bool? withSpacing;
   final int? spacingFlex;
   final int? customWidgetFlex;
+  final Duration? scaleMenuItemAnimDuration;
+  final Duration? scaleFooterAnimDuration;
+  final double? menuItemsMinSize;
+  final double? footeMinScale;
 }

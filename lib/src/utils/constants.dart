@@ -36,6 +36,9 @@ class Constants {
     top: 0.0,
   );
 
+  static final badgePositionTop =
+      BadgePosition.custom(end: 5.0, bottom: 0.0, top: -20.0, isCenter: false);
+
   /// Style
   static const badgeStyle = BadgeStyle(badgeColor: selectedColor);
 }

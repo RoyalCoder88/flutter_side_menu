@@ -100,9 +100,14 @@ class _SideMenuItemTileState extends State<SideMenuItemTile> {
   }) {
     if (widget.data.badgeContent != null) {
       return badges.Badge(
-        badgeContent: Center(child: widget.data.badgeContent!),
+        badgeContent: widget.isOpen
+            ? Center(child: widget.data.badgeContent!)
+            : const SizedBox.shrink(),
         badgeStyle: widget.data.badgeStyle ?? Constants.badgeStyle,
-        position: widget.data.badgePosition ?? Constants.badgePosition,
+        // position: widget.data.badgePosition ?? Constants.badgePosition,
+        position: widget.isOpen
+            ? Constants.badgePosition
+            : Constants.badgePositionTop,
         child: child,
       );
     }
